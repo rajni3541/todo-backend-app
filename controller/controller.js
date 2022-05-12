@@ -8,7 +8,7 @@ exports.showIndex = (req,res) =>{
 exports.addAllToDo = (req,res) =>{
     const post = new todoModule({
         todoName:req.body.todoName,
-        todoDescription:req.body.todoDescription
+        todoDescription:req.body.todoDescription,
     })
 
     post.save()
@@ -57,12 +57,10 @@ exports.modifyToDo = (req,res) =>{
 
 exports.deleteToDo = (req,res) =>{
     todoModule.deleteOne({
-
-        
         _id:req.params.id
     }, (err) =>{
         if(err)
-        res.semd(err)
+        res.send(err)
 
         res.json({
             status : "Success",

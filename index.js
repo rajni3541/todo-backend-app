@@ -1,11 +1,12 @@
 const express = require('express')
 const apirouter = require('./routes/api-routes')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const app = express()
 
-const port = 3005
-app.use(express.json())
+const port = 8080
+app.use(express.json(), cors())
 
 
 app.use('/',apirouter)
@@ -17,9 +18,9 @@ mongoose.connect(url , {useNewUrlParser:true})
 .then(()=>{
     console.log("database connected")
 })
-.catch(err => console.log(err))
+.catch((err) => console.log(err))
 
-app.listen(port, () =>{
+app.listen(8080, () =>{
     console.log(`database is running on http://localhost:${port}`)
 })
 
